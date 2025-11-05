@@ -9,10 +9,10 @@ namespace Characters
     public abstract class Character : MonoBehaviour
     {
         protected CharacterRotator Rotator;
+
         public CharacterMover Mover { get; private set; }
         public HealthComponent Health { get; private set; }
-
-        protected Vector3 StartPoint;
+        public abstract Vector3 StartPoint { get; protected set; }
 
         private void Awake()
         {
@@ -26,6 +26,11 @@ namespace Characters
             CheckIsDie();
         }
 
+        protected virtual void Die()
+        {
+            Mover.DisableMoving();
+        }
+
         public void Restart()
         {
             Health.Revive();
@@ -37,11 +42,6 @@ namespace Characters
         {
             if (Health.IsDead)
                 Die();
-        }
-
-        protected virtual void Die()
-        {
-            Mover.DisableMoving();
         }
     }
 }

@@ -14,6 +14,8 @@ namespace Characters
 
         private bool _isItemAttached;
 
+        public override Vector3 StartPoint { get; protected set; }
+
         protected override void Update()
         {
             ProcessMove();

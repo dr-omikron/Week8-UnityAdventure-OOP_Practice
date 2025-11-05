@@ -80,6 +80,5 @@ namespace CollectableItems
         }
 
         private void ResetTime() => _time = 0;
-
     }
 }
